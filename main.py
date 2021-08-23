@@ -65,7 +65,7 @@ async def commands(ctx):
     await ctx.send(embed=embed)
 
 @slash.slash(name="Commands", description="shows commands")
-async def commands(ctx):
+async def slashcommands(ctx):
   with open('commands.txt', 'r') as cmds:
     embed=discord.Embed(title="Ishaarq's Epic Commands",
     description=cmds.read(),color=0x3080ff)
