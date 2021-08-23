@@ -65,10 +65,9 @@ async def commands(ctx):
 
 @client.command()
 async def join(ctx):
-    author = ctx.message.author
-    channel = author.voice.channel
+  if (ctx.author.voice):
+    channel = ctx.message.author.voice.channel
     await channel.connect()
-    print("i'm in the voice channel")
 
 @client.command()
 async def leave(ctx):
