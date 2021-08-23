@@ -1,6 +1,7 @@
 import discord
 import os
 import time
+from discord import FFmpegPCMAudio
 import discord.ext
 from discord_slash import SlashCommand, SlashContext
 from discord.utils import get
@@ -64,10 +65,13 @@ async def commands(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
-async def join(ctx):
+async def scott(ctx):
   if (ctx.author.voice):
     channel = ctx.message.author.voice.channel
-    await channel.connect()
+    voice = await channel.connect()
+    source = FFmpegPCMAudio('scott.wav')
+    play = voice.play(source)
+
 
 @client.command()
 async def leave(ctx):

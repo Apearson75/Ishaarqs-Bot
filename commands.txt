@@ -2,5 +2,5 @@
 .kick -- kicks a person
 .say -- makes the bot say something
 .source -- sends the source link
-.join -- makes the bot join a voice channel
+.scott -- scott in a voice channel
 .leave -- makes the bot leave a voice channel
