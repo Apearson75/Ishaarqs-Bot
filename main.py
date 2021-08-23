@@ -56,7 +56,12 @@ async def slashkick(ctx, member : discord.Member):
 async def source(ctx):
   await ctx.send("https://github.com/Phoneguytech75/Ishaarqs-Bot")
 
-
+@client.command()
+async def commands(ctx):
+  with open('commands.txt', 'r') as cmds:
+    embed=discord.Embed(title="Ishaarq's Epic Commands",
+    description=cmds.read(),color=0x3080ff)
+    await ctx.send(embed=embed)
 
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 

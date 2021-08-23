@@ -1,0 +1,4 @@
+.ping -- ping pong
+.kick -- kicks a person
+.say -- makes the bot say something
+.source -- sends the source link
