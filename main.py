@@ -63,6 +63,12 @@ async def commands(ctx):
     description=cmds.read(),color=0x3080ff)
     await ctx.send(embed=embed)
 
+@client.command()
+async def join(ctx):
+    author = ctx.message.author
+    channel = author.voice.channel
+    await channel.connect()
+    print("i'm in the voice channel")
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 
 #to keep your bot from shutting down use https://uptimerobot.com then create a https:// monitor and put the link to the website that appewars when you run this repl in the monitor and it will keep your bot alive by pinging the flask server
