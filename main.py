@@ -2,6 +2,7 @@ import discord
 import os
 import time
 import discord.ext
+import PyNaCl
 from discord_slash import SlashCommand, SlashContext
 from discord.utils import get
 from discord.ext import commands, tasks
