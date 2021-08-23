@@ -9,7 +9,7 @@ from discord.ext.commands import has_permissions,  CheckFailure, check
 
 client = discord.Client()
 
-client = commands.Bot(command_prefix = '!') #put your own prefix here
+client = commands.Bot(command_prefix = '.') #put your own prefix here
 
 @client.event
 async def on_ready():
@@ -20,6 +20,7 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send("pong!") #simple command so that when you type "!ping" the bot will respond with "pong!"
 
+@client.command()
 async def kick(ctx, member : discord.Member):
     try:
         await member.kick(reason=None)
