@@ -17,8 +17,9 @@ slash = SlashCommand(client, sync_commands=True)
 
 @client.event
 async def on_ready():
-    print("bot online") #will print "bot online" in the console when the bot is online
-    
+    print("bot online") 
+    game = discord.Game("Hishaam trash?!")
+    await client.change_presence(status=discord.Status.online, activity=game)
     
 @client.command()
 async def ping(ctx):
