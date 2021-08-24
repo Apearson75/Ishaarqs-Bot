@@ -1,8 +1,10 @@
 import discord
 import os
 import time
+import random
 from discord import FFmpegPCMAudio
 import discord.ext
+from googleapiclient.discovery import build
 from discord_slash import SlashCommand, SlashContext
 from discord.utils import get
 from discord.ext import commands, tasks
@@ -14,6 +16,8 @@ client = discord.Client()
 client = commands.Bot(command_prefix = '.') #put 
 slash = SlashCommand(client, sync_commands=True)
 #your own prefix here
+
+google_api = (os.getenv("google_key"))
 
 @client.event
 async def on_ready():
@@ -87,6 +91,15 @@ async def leave(ctx):
     await ctx.voice_client.disconnect()
     print("i'm out of the voice channel")
 
+@client.command()
+async def image(ctx, *, search):
+  ran = random.randint(0, 9)
+  resource = build("customsearch", "v1", developerKey=google_api).cse()
+  result = resource.list(q=f"{search}", cx=" c03f276cbc42ce63f", searchType="image").execute()
+  url = result['items'][ran]['link']
+  embed = discord.Embed(title='Your image')
+  embed.set_image(url=url)
+  await ctx.send(embed=embed)
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 
 #to keep your bot from shutting down use https://uptimerobot.com then create a https:// monitor and put the link to the website that appewars when you run this repl in the monitor and it will keep your bot alive by pinging the flask server
