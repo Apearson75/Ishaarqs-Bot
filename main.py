@@ -94,22 +94,19 @@ async def leave(ctx):
     print("i'm out of the voice channel")
 
 @client.command()
-async def image(ctx, *, search):
-  ran = random.randint(0, 9)
-  resource = build("customsearch", "v1", developerKey=google_api).cse()
-  result = resource.list(q=f"{search}", cx=" c03f276cbc42ce63f", searchType="image").execute()
-  url = result['items'][ran]['link']
-  embed = discord.Embed(title='Your image')
-  embed.set_image(url=url)
-  await ctx.send(embed=embed)
-
-@client.command()
 async def iphone(ctx, member : discord.Member):
   image_url = member.avatar_url
   url = requests.get(f'https://nekobot.xyz/api/imagegen?type=iphonex&url={image_url}')
   json_data = json.loads(url.text)
   image_output = json_data['message']
   await ctx.send(image_output)
+
+@client.command()
+async def urban(ctx, *, word):
+  url = requests.get(f'https://api.urbandictionary.com/v0/define?term={word}')
+  json_data = json.loads(url.text)
+  define = json_data['list'][0]['definition']
+  await ctx.send(define) 
 
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 

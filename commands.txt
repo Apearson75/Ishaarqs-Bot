@@ -4,3 +4,5 @@
 .source -- sends the source link
 .scott -- scott in a voice channel
 .leave -- makes the bot leave a voice channel
+.iphone -- puts your pfp on an iphone
+.urban -- gets a definition from the urban dictionary
