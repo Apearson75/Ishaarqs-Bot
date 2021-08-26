@@ -105,7 +105,7 @@ async def iphone(ctx, member : discord.Member):
 async def urban(ctx, *, word):
   url = requests.get(f'https://api.urbandictionary.com/v0/define?term={word}')
   json_data = json.loads(url.text)
-  define = json_data['list'][0]['definition']
+  define = json_data['list'][random.randint(0, 5)]['definition']
   await ctx.send(define) 
 
 
