@@ -1,6 +1,8 @@
 import discord
 import os
 import time
+import requests
+import json
 import random
 from discord import FFmpegPCMAudio
 import discord.ext
@@ -100,6 +102,15 @@ async def image(ctx, *, search):
   embed = discord.Embed(title='Your image')
   embed.set_image(url=url)
   await ctx.send(embed=embed)
+
+@client.command()
+async def iphone(ctx, member : discord.Member):
+  image_url = member.avatar_url
+  url = requests.get(f'https://nekobot.xyz/api/imagegen?type=iphonex&url={image_url}')
+  json_data = json.loads(url.text)
+  image_output = json_data['message']
+  await ctx.send(image_output)
+
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 
 #to keep your bot from shutting down use https://uptimerobot.com then create a https:// monitor and put the link to the website that appewars when you run this repl in the monitor and it will keep your bot alive by pinging the flask server
