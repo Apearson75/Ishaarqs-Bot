@@ -5,6 +5,7 @@ import requests
 import json
 import random
 from discord import FFmpegPCMAudio
+from pypresence import Presence
 import discord.ext
 from googleapiclient.discovery import build
 from discord_slash import SlashCommand, SlashContext
@@ -24,7 +25,7 @@ google_api = (os.getenv("google_key"))
 @client.event
 async def on_ready():
     print("bot online") 
-    game = discord.Game("Hishaam trash?!")
+    game = discord.Game(f'{str(len(client.guilds))} servers')
     await client.change_presence(status=discord.Status.online, activity=game)
     
 @client.command()
