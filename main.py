@@ -106,8 +106,11 @@ async def iphone(ctx, member : discord.Member):
 async def urban(ctx, *, word):
   url = requests.get(f'https://api.urbandictionary.com/v0/define?term={word}')
   json_data = json.loads(url.text)
-  define = json_data['list'][random.randint(0, 5)]['definition']
-  await ctx.send(define) 
+  randomint = random.randint(0, 5)
+  define = json_data['list'][randomint]['definition']
+  link = json_data['list'][randomint]['permalink']
+  embed=discord.Embed(title=word, url=link)
+  embed.add_field(name='Definition', value=define)
 
 
 client.run(os.getenv("TOKEN")) #get your bot token and create a key named `TOKEN` to the secrets panel then paste your bot token as the value. 
