@@ -104,12 +104,15 @@ async def iphone(ctx, member : discord.Member):
 
 @client.command()
 async def urban(ctx, *, word):
+  img='https://wjlta.files.wordpress.com/2013/07/ud-logo.jpg'
+  cap_word = word.capitalize()
   url = requests.get(f'https://api.urbandictionary.com/v0/define?term={word}')
   json_data = json.loads(url.text)
   randomint = random.randint(0, 5)
   define = json_data['list'][randomint]['definition']
   link = json_data['list'][randomint]['permalink']
-  embed=discord.Embed(title=word, url=link)
+  embed=discord.Embed(title=cap_word, url=link)
+  embed.set_image(url=img)
   embed.add_field(name='Definition', value=define)
   await ctx.send(embed=embed)
 
