@@ -4,3 +4,4 @@ discord-py-slash-command
 PyNaCl
 google-api-python-client
 requests
+pypresence
